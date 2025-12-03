@@ -11,9 +11,9 @@ public class Member extends BaseEntity {
     @Column(name="MEMBER_ID")
     private Long id;
     private String name;
-    private String city;
-    private String street;
-    private String zipcode;
+
+    @Embedded
+    private Address address;
 
     // JPA나 HIBERNATE에서는 관례상 초기화해준다(NULL EXCEPTION 방지 등..)
     @OneToMany(mappedBy = "member")
@@ -33,29 +33,5 @@ public class Member extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
     }
 }
